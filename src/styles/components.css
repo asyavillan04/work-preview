@@ -5,3 +5,25 @@
     padding: 10px;
     border-radius: var(--border-radius);
 }
+
+.features {
+    box-shadow: var(--box-shadow);
+    background-color: var(--color-bg);
+}
+
+.skills {
+    background-color: var(--color-accent-secondary-2);
+}
+
+h1 {
+    color: var(--color-accent-hover);
+}
+
+button {
+    font-family: inherit;
+}
+
+.header-button {
+    height: 50px;
+    min-width: 50px;
+}

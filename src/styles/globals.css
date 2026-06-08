@@ -4,6 +4,9 @@ html, body {
     height: 100%;
     padding: 0;
     margin: 0;
+    font-family: 'Alumni Sans', sans-serif;
+    font-weight: 100;
+    font-size: 2.5vh;
 }
 
 main {
@@ -12,4 +15,9 @@ main {
 
 h1, h2, h3 {
     margin: 0;
+    font-weight: 300;
+}
+
+h1 {
+    font-weight: 500;
 }

@@ -1,3 +1,12 @@
+header {
+    display: block;
+    height: 70px;
+    background-color: var(--color-accent-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 .hero {
     display: flex;
     width: 100%;
@@ -9,7 +18,7 @@
 .block {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     font-weight: bold;
     border-radius: var(--border-radius);
     gap: 20px;
@@ -17,16 +26,11 @@
 }
 
 .features {
-    background-color: var(--color-accent-secondary);
     flex: 3;
-    border-top-right-radius: 65px 175px;
-    border-bottom-right-radius: 10px 20px;
     align-items: flex-start;
-    color: var(--color-text-primary);
 }
 
-.block-right {
-    background-color: var(--color-accent-secondary);
+.skills {
     flex: 2;
     align-items: flex-end;
 }
@@ -34,9 +38,11 @@
 @media (min-width: 769px) {
     .features {
         clip-path: polygon(0% 0%, calc(100% - 50px) 0%, 100% 100%, 0% 100%);
+        border-top-right-radius: 65px 175px;
+        border-bottom-right-radius: 10px 20px;
     }
 
-    .block-right {
+    .skills {
         clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50px 100%);
         border-top-left-radius: 10px 20px;
         border-bottom-left-radius: 65px 175px;
