@@ -9,10 +9,11 @@ header {
 
 .hero {
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: auto;
     background: transparent;
-    gap: 0px;
+    gap: 10px;
 }
 
 .block {
@@ -21,7 +22,6 @@ header {
     justify-content: flex-start;
     font-weight: bold;
     border-radius: var(--border-radius);
-    gap: 20px;
     padding: 20px;
 }
 
@@ -36,6 +36,16 @@ header {
 }
 
 @media (min-width: 769px) {
+
+    .hero {
+        flex-direction: row;
+        gap: 0px
+    }
+
+    .block {
+        padding: 40px;
+    }
+
     .features {
         clip-path: polygon(0% 0%, calc(100% - 50px) 0%, 100% 100%, 0% 100%);
         border-top-right-radius: 65px 175px;

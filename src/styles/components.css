@@ -21,9 +21,31 @@ h1 {
 
 button {
     font-family: inherit;
+    cursor: pointer;
 }
 
 .header-button {
-    height: 50px;
-    min-width: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    
+    overflow: hidden;
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 500;
+}
+
+.header-button svg {
+    object-fit: contain;
+}
+
+.language-short {
+    font-size: 20px;
 }
