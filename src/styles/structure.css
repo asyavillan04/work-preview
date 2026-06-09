@@ -1,10 +1,14 @@
 header {
-    display: block;
-    height: 70px;
     background-color: var(--color-accent-secondary);
     display: flex;
-    align-items: center;
     justify-content: flex-end;
+}
+
+.header__header-buttons {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 20px;
 }
 
 .hero {
@@ -23,6 +27,7 @@ header {
     font-weight: bold;
     border-radius: var(--border-radius);
     padding: 20px;
+    
 }
 
 .features {
@@ -36,6 +41,10 @@ header {
 }
 
 @media (min-width: 769px) {
+
+    .header__header-buttons {
+        padding: 20px 80px;
+    }
 
     .hero {
         flex-direction: row;

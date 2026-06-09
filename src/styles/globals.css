@@ -6,11 +6,23 @@ html, body {
     margin: 0;
     font-family: 'Alumni Sans', sans-serif;
     font-weight: 100;
-    font-size: 2.5vh;
+    font-size: 2vh;
+}
+
+html {
+    overflow: clip;
+}
+
+body {
+    overflow-y: auto;
+    overflow-x: clip;
 }
 
 main {
+    display: flex;
+    flex-direction: column;
     padding: 10px;
+    gap: 20px;
 }
 
 h1, h2, h3 {
@@ -20,14 +32,24 @@ h1, h2, h3 {
 
 h1 {
     font-weight: 500;
+    min-height: 1.2em; 
 }
 
+h2 {
+    font-size: 3vh;
+}
 h3 {
     font-weight: 700;
+    color: var(--color-accent-secondary);
 }
 
 @media (min-width: 769px) {
     main {
         padding: 40px;
     }
+
+    html {
+        font-size: 2.5vh;
+    }
+    
 }
