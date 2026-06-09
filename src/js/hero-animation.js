@@ -191,25 +191,26 @@ function initPortfolioScroll() {
   const btnLeft = document.querySelector('.portfolio__portfolio-scroll-btn-left');
   const btnRight = document.querySelector('.portfolio__portfolio-scroll-btn-right');
 
-  // Проверяем, что основные элементы найдены
   if (!projectsContent || !btnLeft || !btnRight) {
     console.warn('Не найдены элементы для скролла портфолио');
     return;
   }
 
   const card = document.querySelector('.project-card');
-  const cardWidth = card ? card.offsetWidth : 300;
+  // Получаем фактический gap из CSS
+  const gap = parseInt(getComputedStyle(projectsContent).columnGap) || 0;
+  const scrollAmount = card ? card.offsetWidth + gap : 300 + gap;
 
   function scrollLeft() {
     projectsContent.scrollBy({
-      left: -cardWidth,
+      left: -scrollAmount,
       behavior: 'smooth'
     });
   }
 
   function scrollRight() {
     projectsContent.scrollBy({
-      left: cardWidth,
+      left: scrollAmount,
       behavior: 'smooth'
     });
   }
@@ -219,15 +220,12 @@ function initPortfolioScroll() {
 
   function updateButtonsVisibility() {
     const maxScrollLeft = projectsContent.scrollWidth - projectsContent.clientWidth;
-    // Левая кнопка видна, если прокрутка не в начале
     btnLeft.style.opacity = projectsContent.scrollLeft <= 0 ? '0' : '1';
     btnLeft.style.pointerEvents = projectsContent.scrollLeft <= 0 ? 'none' : 'auto';
-    // Правая кнопка видна, если прокрутка не в конце
     btnRight.style.opacity = projectsContent.scrollLeft >= maxScrollLeft - 1 ? '0' : '1';
     btnRight.style.pointerEvents = projectsContent.scrollLeft >= maxScrollLeft - 1 ? 'none' : 'auto';
   }
 
   projectsContent.addEventListener('scroll', updateButtonsVisibility);
-  // Инициализация видимости при загрузке
   updateButtonsVisibility();
 }

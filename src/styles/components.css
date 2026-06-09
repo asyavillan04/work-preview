@@ -146,21 +146,21 @@ button {
     flex-direction: column;
     gap: 20px;
     padding: 40px;
-    width: 80vw;
+    width: 80%;
     height: auto;
     border-radius: var(--border-radius);
 }
 
 .project-images-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     gap: 20px;
 }
 
 .project-image {
-    height: 30vh;
-    width: auto;
+    max-height: 30vh;
+    max-width: 100%;
     object-fit: contain;
     
 }
@@ -197,5 +197,9 @@ button {
 
     .project-image {
         height: 50vh;
+    }
+
+    .project-images-wrapper {
+        flex-direction: row;
     }
 }
