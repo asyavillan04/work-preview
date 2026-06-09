@@ -57,3 +57,30 @@ div.block.skills {
   transform: translate(0);
   opacity: 1;
 }
+
+/* Сама секция всегда видна и занимает место */
+.portfolio-placeholder {
+  display: block;          /* чтобы точно участвовала в потоке */
+  min-height: 90vh;           /* не схлопывается */
+  overflow: visible;       /* не обрезаем */
+}
+
+/* Скрываем только внутреннюю обёртку с помощью max-height */
+.portfolio--collapsed .portfolio_portfolio-hide-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+/* Раскрытое состояние */
+.portfolio:not(.portfolio--collapsed) .portfolio_portfolio-hide-wrapper {
+  max-height: 2000px;      /* достаточно большое значение */
+  transition: max-height 0.5s ease;
+}
+
+.portfolio_portfolio-open-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}

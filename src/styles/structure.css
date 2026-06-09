@@ -2,6 +2,9 @@ header {
     background-color: var(--color-accent-secondary);
     display: flex;
     justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .header__header-buttons {

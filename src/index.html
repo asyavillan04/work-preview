@@ -97,17 +97,19 @@
 
         </section>
 
-
-        <section class="portfolio block">
+<div class="portfolio-placeholder">
+        <section class="portfolio block portfolio--collapsed">
 
             <div class="portfolio__portfolio-head">
                 <h1 class="portfolio__portfolio-title">Портфолио</h1>
+                <button class="portfolio_portfolio-open-button">
                 <svg width="100" height="100" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M93.5 174.5L256.5 337.5L419.5 174.5" stroke="currentColor" stroke-width="24" stroke-linecap="round"/>
                 </svg>
+                </button>
             </div>
                 
-            
+            <div class="portfolio_portfolio-hide-wrapper">
                 <button class="portfolio__portfolio-scroll-btn portfolio__portfolio-scroll-btn-left" aria-label="Прокрутить влево">
                     ←
                 </button>
@@ -167,11 +169,14 @@
 
            
 
-          <button class="portfolio__portfolio-scroll-btn portfolio__portfolio-scroll-btn-right" aria-label="Прокрутить вправо">→</button>
+                <button class="portfolio__portfolio-scroll-btn portfolio__portfolio-scroll-btn-right" aria-label="Прокрутить вправо">
+                    →
+                </button>
+            </div>
 
         </section>
 
-
+    </div>
         <section class="contacts">
 
             <h1 class="contacts__contacts-title">
