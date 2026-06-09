@@ -12,6 +12,7 @@ async function typeWriter(element, text, speed = 40) {
 
   const line = element.nextElementSibling;
   element.textContent = '';
+  element.style.opacity = '1'; 
   for (let i = 0; i < text.length; i++) {
     element.textContent += text[i];
     if (line && line.classList.contains('typing-line')) {
