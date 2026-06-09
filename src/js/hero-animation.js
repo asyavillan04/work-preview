@@ -209,11 +209,58 @@ function initPortfolioScroll() {
   updateButtonsVisibility();
 }
 
+function applyTheme(theme) {
+    const root = document.documentElement;
+    if (theme === 'auto') {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        root.classList.toggle('dark-theme', prefersDark);
+    } else {
+        root.classList.toggle('dark-theme', theme === 'dark');
+    }
+    localStorage.setItem('app-theme', theme);
+}
+
+function initThemeSwitcher() {
+    const container = document.querySelector('[data-dropdown="theme"]');
+    if (!container) return;
+
+    const trigger = container.querySelector('.header-button');
+    const menu = container.querySelector('.settings-dropdown__menu');
+    const options = container.querySelectorAll('.option');
+
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menu.hidden = !menu.hidden;
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!container.contains(e.target)) {
+            menu.hidden = true;
+        }
+    });
+
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            const theme = option.dataset.theme;
+            if (theme) {
+                applyTheme(theme);
+                menu.hidden = true;
+            }
+        });
+    });
+
+    const savedTheme = localStorage.getItem('app-theme') || 'auto';
+    applyTheme(savedTheme);
+}
+
 // =============================================
 // Запуск после готовности DOM
 // =============================================
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', startHeroAnimation);
+  document.addEventListener('DOMContentLoaded', () => {
+    startHeroAnimation();
+    initThemeSwitcher(); 
+});
 } else {
   startHeroAnimation();
 }
