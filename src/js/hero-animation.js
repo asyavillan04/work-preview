@@ -251,6 +251,14 @@ function initToggleSections() {
         event.preventDefault();
         toggleSection(contacts, portfolio);
       }
+    } else if (event.key === 'ArrowUp' && document.activeElement === document.body) {
+      if (!portfolio.classList.contains('portfolio--collapsed')) {
+        event.preventDefault();
+        toggleSection(portfolio, null);
+      } else if (!contacts.classList.contains('contacts--collapsed')) {
+        event.preventDefault();
+        toggleSection(contacts, null);
+      }
     }
   });
 }

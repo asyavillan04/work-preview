@@ -6,7 +6,7 @@
     --color-accent: #a5724c;
     --color-accent-hover: #9D6241;
     --color-accent-secondary: #6d795d;
-    --color-accent-secondary-1: #47523a;
+    --color-accent-secondary-1: #343b2a;
     --color-accent-secondary-2: #9aa788;
     --color-border: #E2DDD2;
     --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -26,13 +26,13 @@
     --color-accent-hover: #7A4F33;
     
     /* Тёмный оливковый (зелёный акцент) – глубокий, не светлый */
-    --color-accent-secondary: #424f38;
+    --color-accent-secondary: #5e6e51;
     
     /* Ещё более тёмный для второстепенных элементов */
-    --color-accent-secondary-1: #293322;
+    --color-accent-secondary-1: #9cac90;
     
     /* Светлее, но всё ещё приглушённо – для фоновых акцентов */
-    --color-accent-secondary-2: #636e58;
+    --color-accent-secondary-2: #2d3d26;
     
     --color-border: #2C3126;
     --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
