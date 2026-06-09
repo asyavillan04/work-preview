@@ -1,4 +1,6 @@
-/* Плавная смена темы для основных элементов */
+/* =============================================
+   Плавная смена темы для основных элементов
+   ============================================= */
 html,
 body,
 header,
@@ -22,7 +24,9 @@ body {
     transition: background-color 0.3s ease;
 }
 
-/* Блоки изначально скрыты */
+/* =============================================
+   Блоки hero – изначально скрыты
+   ============================================= */
 div.block.features {
   transform: translateX(-100vw);
   opacity: 0;
@@ -33,41 +37,92 @@ div.block.skills {
   opacity: 0;
   transition: transform 0.6s ease, opacity 0.6s ease;
 }
-
-.block.features h3,
-.block.skills h3 {
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.block.features.animate,
+.block.skills.animate {
+  transform: translate(0);
+  opacity: 1;
 }
 
-/* Изначально скрываем и сдвигаем вправо (выезд справа налево) */
-.block.skills h3,
+/* =============================================
+   Левый блок (Features) – анимация вложенных элементов
+   ============================================= */
+
+/* Контейнеры фич – выезжают слева направо */
+.features__feature-wrapper {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.features__feature-wrapper.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* Подзаголовок (h3) – выезжает сверху из-под линии */
+.block.features h3 {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.block.features h3.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =============================================
+   Правый блок (Skills) – анимация вложенных элементов
+   ============================================= */
+
+/* Технологии (h2) – выезжают справа налево */
 .block.skills h2 {
   opacity: 0;
   transform: translateX(30px);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
-
-/* Когда элемент получает класс .animate, он становится видимым и встаёт на место */
-.block.skills h3.animate,
 .block.skills h2.animate {
   opacity: 1;
   transform: translateX(0);
 }
 
+/* Подзаголовки (h3) – выезжают сверху из-под линии */
+.block.skills h3 {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.block.skills h3.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =============================================
+   Общие анимации появления
+   ============================================= */
+
+/* Портфолио – снизу */
 .portfolio {
   transform: translateY(100px);
   opacity: 0;
   transition: transform 0.6s ease, opacity 0.6s ease;
 }
-
-.portfolio_portfolio-open-button svg {
-  transition: transform 0.3s ease;
-}
-.portfolio:not(.portfolio--collapsed) .portfolio_portfolio-open-button svg {
-  transform: rotate(180deg);
+.portfolio.animate {
+  transform: translate(0);
+  opacity: 1;
 }
 
+/* Контакты – слева направо */
+.contacts {
+  transform: translateX(-100vw);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+.contacts.animate {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Линия под заголовком */
 .typing-line {
   width: 0;
   height: 2px;
@@ -79,74 +134,11 @@ div.block.skills {
   width: 100%;
 }
 
-.features__feature-wrapper {
-  opacity: 0;
-  transform: translateX(30px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.features__feature-wrapper.animate {
-  opacity: 1;
-  transform: translateX(0);
-}
+/* =============================================
+   Раскрытие/сворачивание портфолио и контактов
+   ============================================= */
 
-.feature-item-hidden {
-  opacity: 0;
-  transform: translateX(30px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.feature-item-hidden.animate {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.block.features.animate,
-.block.skills.animate,
-.portfolio.animate {
-  transform: translate(0);
-  opacity: 1;
-}
-
-/* Сама секция всегда видна и занимает место */
-.portfolio-placeholder {
-  display: block;          /* чтобы точно участвовала в потоке */
-  min-height: 90vh;           /* не схлопывается */
-  overflow: visible;       /* не обрезаем */
-}
-
-/* Скрываем только внутреннюю обёртку с помощью max-height */
-.portfolio--collapsed .portfolio_portfolio-hide-wrapper {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
-}
-
-/* Раскрытое состояние */
-.portfolio:not(.portfolio--collapsed) .portfolio_portfolio-hide-wrapper {
-  max-height: 2000px;      /* достаточно большое значение */
-  transition: max-height 0.5s ease;
-}
-
-.portfolio_portfolio-open-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-}
-
-/* Начальное скрытое состояние – уезжаем влево за экран */
-.contacts {
-  transform: translateX(-100vw);
-  opacity: 0;
-  transition: transform 0.6s ease, opacity 0.6s ease;
-}
-
-/* Когда добавляется класс .animate – выезжаем на место */
-.contacts.animate {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-/* Скрытие контента в портфолио и контактах */
+/* Свёрнутое состояние */
 .portfolio--collapsed .portfolio_portfolio-hide-wrapper,
 .contacts--collapsed .contacts__contacts-info {
   max-height: 0;
@@ -154,13 +146,30 @@ div.block.skills {
   transition: max-height 0.5s ease;
 }
 
+/* Раскрытое состояние */
 .portfolio:not(.portfolio--collapsed) .portfolio_portfolio-hide-wrapper,
 .contacts:not(.contacts--collapsed) .contacts__contacts-info {
   max-height: 2000px;
   transition: max-height 0.5s ease;
 }
 
-/* Поворот стрелки (единый) */
+/* Дополнительный сброс отступов для контактов, чтобы текст не проглядывал */
+.contacts--collapsed .contacts__contacts-info {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* =============================================
+   Кнопка раскрытия и стрелка
+   ============================================= */
+.portfolio_portfolio-open-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Поворот стрелки */
 .portfolio_portfolio-open-button svg {
   transition: transform 0.3s ease;
 }
@@ -169,10 +178,11 @@ div.block.skills {
   transform: rotate(180deg);
 }
 
-
-.contacts--collapsed .contacts__contacts-info {
-  max-height: 0;
-  overflow: hidden;
-  padding-top: 0;
-  padding-bottom: 0;
+/* =============================================
+   Заглушка для портфолио (если нужно)
+   ============================================= */
+.portfolio-placeholder {
+  display: block;
+  min-height: 90vh;
+  overflow: visible;
 }

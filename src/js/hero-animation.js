@@ -22,29 +22,6 @@ async function typeWriter(element, text, speed = 40) {
   }
 }
 
-async function animateTextParts(element, fullText, separator = ',', pause = 300) {
-  const parts = fullText.split(separator).map(part => part.trim());
-  element.textContent = '';
-  element.style.opacity = '1';
-
-  const spans = parts.map((part, i) => {
-    const span = document.createElement('span');
-    span.textContent = part;
-    span.style.opacity = '0';
-    span.style.transition = 'opacity 0.3s ease';
-    if (i < parts.length - 1) {
-      span.textContent += separator + ' ';
-    }
-    element.appendChild(span);
-    return span;
-  });
-
-  for (const span of spans) {
-    await delay(pause);
-    span.style.opacity = '1';
-  }
-}
-
 async function cascadeFadeIn(items, stagger = 200) {
   const elements = Array.from(items);
   elements.forEach((item, index) => {
@@ -77,9 +54,13 @@ async function startHeroAnimation() {
     if (title && text) await typeWriter(title, text, 40);
     if (line) line.classList.add('visible');
 
+    // Подзаголовок h3 – просто добавляем animate, чтобы выехал сверху
     const subtitle = featuresBlock.querySelector('h3');
-    if (subtitle) await animateTextParts(subtitle, subtitle.textContent, ',', 300);
+    if (subtitle) {
+      subtitle.classList.add('animate');
+    }
 
+    // Фичи (features__feature-wrapper) выезжают каскадно
     const featureItems = featuresBlock.querySelectorAll('.features__feature-wrapper');
     if (featureItems.length > 0) {
       await cascadeFadeIn(featureItems, 200);
@@ -120,7 +101,6 @@ async function startHeroAnimation() {
 
   // Инициализируем интерактивные элементы после завершения анимаций
   await initPortfolio();
-  await initContacts();
   initToggleSections();
 }
 
@@ -161,10 +141,6 @@ function initPortfolioScroll() {
   updateButtonsVisibility();
 }
 
-// =============================================
-// Инициализация кнопок открытия/закрытия
-// =============================================
-
 async function initPortfolio() {
   const portfolio = document.querySelector('.portfolio');
   if (!portfolio) return;
@@ -172,9 +148,9 @@ async function initPortfolio() {
   initPortfolioScroll();
 }
 
-async function initContacts() {
-  // здесь можно будет добавить инициализацию для контактов, если понадобится
-}
+// =============================================
+// Открытие / закрытие секций
+// =============================================
 
 function toggleSection(section, otherSection) {
   const title = section.querySelector('.contacts__contacts-title') || section.querySelector('.portfolio__portfolio-title');
