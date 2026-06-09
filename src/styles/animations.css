@@ -165,6 +165,7 @@ div.block.skills {
   padding-bottom: 0;
 }
 
+
 /* =============================================
    Кнопка раскрытия и стрелка
    ============================================= */
@@ -189,6 +190,6 @@ div.block.skills {
    ============================================= */
 .portfolio-placeholder {
   display: block;
-  min-height: 90vh;
+  height: 90vh;
   overflow: visible;
 }

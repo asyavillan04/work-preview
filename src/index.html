@@ -119,8 +119,15 @@
                         </svg>
                     </button>
                 </div>
+
                 <div class="portfolio_portfolio-hide-wrapper">
-                    <button class="portfolio__portfolio-scroll-btn portfolio__portfolio-scroll-btn-left" aria-label="Прокрутить влево" data-i18n-aria="scrollLeft">←</button>
+
+                    <button class="portfolio__portfolio-scroll-btn portfolio__portfolio-scroll-btn-left" aria-label="Прокрутить влево" data-i18n-aria="scrollLeft">
+                        <svg width="40" height="40" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M338 419L175 256L338 93" stroke="currentColor" stroke-width="24" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+
                     <div class="portfolio__portfolio-content">
                         <article class="project-card">
                             <h3> To-do list </h3>
@@ -133,7 +140,7 @@
                         </article>
 
                         <article class="project-card">
-                            <h3> Превью статьи с появляющимся меню "поделиться" </h3>
+                            <h3 data-i18n="previewProjectTitle"> Превью статьи с появляющимся меню "поделиться" </h3>
                             <div class="links-wrapper">
                                 <a class="project-link" href="https://github.com/asyavillan04/article-preview-component-master" data-i18n="githubRepo">Репозиторий на GitHub</a>
                                 <a class="project-link" href="https://asyavillan04.github.io/article-preview-component-master/" data-i18n="gitPages">Страница на GitPages</a>
@@ -156,7 +163,13 @@
                             </div>
                         </article>
                     </div>
-                    <button class="portfolio__portfolio-scroll-btn portfolio__portfolio-scroll-btn-right" aria-label="Прокрутить вправо" data-i18n-aria="scrollRight">→</button>
+
+                    <button class="portfolio__portfolio-scroll-btn portfolio__portfolio-scroll-btn-right" aria-label="Прокрутить вправо" data-i18n-aria="scrollRight">
+                        <svg width="40" height="40" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M175 419L338 256L175 93" stroke="currentColor" stroke-width="24" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+
                 </div>
             </section>
 
@@ -169,11 +182,11 @@
                         </svg>
                     </button>
                 </div>
-                <div class="contacts__contacts-info" data-i18n="contactsText">
-                    Чтобы сделать заказ, напишите мне:
-                    <h3> <a href="">VK</a> </h3>
-                    <h3> <a href="">Telegram</a> </h3>
-                    <h3> <a href="">Email</a> </h3>
+                <div class="contacts__contacts-info"">
+                    <h2 data-i18n="contactsText">Чтобы сделать заказ, напишите мне: </h2>
+                    <h3> <a href="#">VK</a> </h3>
+                    <h3> <a href="#">Telegram</a> </h3>
+                    <h3> <a href="#">Email</a> </h3>
                 </div>
             </section>
         </div>

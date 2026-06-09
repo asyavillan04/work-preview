@@ -1,3 +1,4 @@
+// js/translations.js
 export const translations = {
   ru: {
     siteTitle: 'Разработаю сайт',
@@ -16,6 +17,10 @@ export const translations = {
     contactsText: 'Чтобы сделать заказ, напишите мне:',
     languageButton: 'Язык',
     themeButton: 'Тема',
+    themeLight: 'Светлая',
+    themeDark: 'Тёмная',
+    themeAuto: 'Авто',
+    fontButton: 'Шрифт для лёгкого чтения',
     scrollLeft: 'Прокрутить влево',
     scrollRight: 'Прокрутить вправо',
     expandPortfolio: 'Развернуть портфолио',
@@ -24,6 +29,7 @@ export const translations = {
     gitPages: 'Приложение на GitPages',
     todoDescription: 'Кроме обычного функционала туду листов, настроила выбор языка и автоматическую установку тёмной или светлой темы (с возможностью её изменения).',
     previewDescription: 'Моё первое практическое применение JS. По клику открывается меню с соцсетями. Дополнительно разобралась с CSS-анимациями.',
+    previewProjectTitle: 'Превью статьи с появляющимся меню "поделиться"',
     perfumeApp: 'Приложение для парфюмеров (в разработке)',
   },
   en: {
@@ -43,6 +49,10 @@ export const translations = {
     contactsText: 'To place an order, write to me:',
     languageButton: 'Language',
     themeButton: 'Theme',
+    themeLight: 'Light',
+    themeDark: 'Dark',
+    themeAuto: 'Auto',
+    fontButton: 'Easy Reading Font',
     scrollLeft: 'Scroll left',
     scrollRight: 'Scroll right',
     expandPortfolio: 'Expand portfolio',
@@ -51,6 +61,7 @@ export const translations = {
     gitPages: 'App on GitPages',
     todoDescription: 'In addition to the usual todo list functionality, I set up language selection and automatic dark or light theme installation (with the ability to change it).',
     previewDescription: 'My first practical use of JS. Clicking opens a menu with social networks. Additionally, I figured out CSS animations.',
+    previewProjectTitle: 'Article Preview with a Share Menu',
     perfumeApp: 'Perfume Organizer (in development)',
   },
   es: {
@@ -70,6 +81,10 @@ export const translations = {
     contactsText: 'Para hacer un pedido, escríbeme a:',
     languageButton: 'Idioma',
     themeButton: 'Tema',
+    themeLight: 'Claro',
+    themeDark: 'Oscuro',
+    themeAuto: 'Auto',
+    fontButton: 'Fuente de lectura fácil',
     scrollLeft: 'Desplazar a la izquierda',
     scrollRight: 'Desplazar a la derecha',
     expandPortfolio: 'Expandir portafolio',
@@ -78,6 +93,7 @@ export const translations = {
     gitPages: 'Aplicación en GitPages',
     todoDescription: 'Además de las funciones habituales de listas de tareas, configuré la selección de idioma y la instalación automática de temas oscuros o claros (con posibilidad de cambio).',
     previewDescription: 'Mi primer uso práctico de JS. Al hacer clic se abre un menú con redes sociales. Además, aprendí animaciones CSS.',
+    previewProjectTitle: 'Vista previa del artículo con el menú "compartir"',
     perfumeApp: 'Organizador de perfumes (en desarrollo)',
   },
   eo: {
@@ -97,6 +113,10 @@ export const translations = {
     contactsText: 'Por mendi, skribu al mi:',
     languageButton: 'Lingvo',
     themeButton: 'Temo',
+    themeLight: 'Hela',
+    themeDark: 'Malhela',
+    themeAuto: 'Aŭtomata',
+    fontButton: 'Facile legebla tiparo',
     scrollLeft: 'Rulumu maldekstren',
     scrollRight: 'Rulumu dekstren',
     expandPortfolio: 'Malfermi portfolio',
@@ -105,6 +125,7 @@ export const translations = {
     gitPages: 'Apliko ĉe GitPages',
     todoDescription: 'Krom la kutimaj funkcioj de listoj de farotajoj, mi agordis lingvoelekton kaj aŭtomatan instaladon de malhela aŭ hela temo (kun ebleco de ŝanĝo).',
     previewDescription: 'Mia unua praktika uzo de JS. Alklako malfermas menuon kun sociaj retoj. Krome mi komprenis CSS-animaciojn.',
+    previewProjectTitle: 'Antaŭrigardo de artikolo kun la menuo "kunhavigi"',
     perfumeApp: 'Parfumorganizilo (evoluanta)',
   }
 };

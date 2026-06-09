@@ -162,7 +162,7 @@ button {
 }
 
 .project-image {
-    max-height: 30vh;
+    max-height: 25vh;
     max-width: 100%;
     object-fit: contain;
     
@@ -170,8 +170,8 @@ button {
 
 .portfolio__portfolio-scroll-btn {
     
-    background-color: var(--color-accent-hover);
-    color: var(--color-main-text);
+    background-color: var(--color-accent);
+    color: var(--color-bg);
     border: none;
     outline: px solid var(--color-main-text);
     width: 50px; 
@@ -179,6 +179,9 @@ button {
     transition: opacity 0.3s, visibility 0.3s;
     z-index: 2;
     position: sticky;
+    &:hover {
+        background-color: var(--color-accent-hover);
+    }
 }
 
 /* Скрываем скроллбар для Webkit-браузеров (Chrome, Safari, Edge) */
