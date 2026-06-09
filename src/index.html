@@ -40,13 +40,7 @@
                         <li><button class="option" data-theme="dark">Тёмная</button></li>
                         <li><button class="option" data-theme="auto">Авто</button></li>
                     </ul>
-        </div>
-
-            <button class="header-button">
-                <?xml version="1.0" encoding="UTF-8"?>
-                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                
-            </button> 
+            </div>
 
             <button class="header-button"><span class="language-short">RU</span> Язык </button> 
             <button class="header-button"> Шрифт для лёгкого чтения </button>
@@ -112,10 +106,10 @@
 <div class="portfolio-placeholder">
         <section class="portfolio block portfolio--collapsed">
 
-            <div class="portfolio__portfolio-head">
+            <div class="portfolio__portfolio-head interactive">
                 <h1 class="portfolio__portfolio-title">Портфолио</h1>
                 <button class="portfolio_portfolio-open-button">
-                <svg width="100" height="100" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="60" height="60" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M93.5 174.5L256.5 337.5L419.5 174.5" stroke="currentColor" stroke-width="24" stroke-linecap="round"/>
                 </svg>
                 </button>
@@ -188,24 +182,31 @@
 
         </section>
 
-                <section class="contacts">
+                <section class="contacts block contacts--collapsed">
+                    <div class="contacts__contacts-head interactive">
+                    <h1 class="contacts__contacts-title">
+                        Контакты
+                    </h1>
+                    <button class="portfolio_portfolio-open-button">
+                        <svg width="60" height="60" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M93.5 174.5L256.5 337.5L419.5 174.5" stroke="currentColor" stroke-width="24" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    </div>
 
-            <h1 class="contacts__contacts-title">
-                Контакты
-            </h1>
-
-            <div class="contacts__contacts-info">
-                Чтобы сделать заказ, напишите мне:
-
-
-            </div>
-        </section>
+                    <div class="contacts__contacts-info">
+                        Чтобы сделать заказ, напишите мне:
+                        <h3> <a href="">VK</a> </h3>
+                        <h3> <a href="">Telegram</a> </h3>
+                        <h3> <a href="">Email</a> </h3>
+                    </div>
+                </section>
     </div>
 
 
 
     </main>
-
+    <script src="js/theme-switcher.js"></script>
     <script src="js/hero-animation.js"></script>
 </body>
 </html>

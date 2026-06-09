@@ -145,3 +145,34 @@ div.block.skills {
   transform: translateX(0);
   opacity: 1;
 }
+
+/* Скрытие контента в портфолио и контактах */
+.portfolio--collapsed .portfolio_portfolio-hide-wrapper,
+.contacts--collapsed .contacts__contacts-info {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.portfolio:not(.portfolio--collapsed) .portfolio_portfolio-hide-wrapper,
+.contacts:not(.contacts--collapsed) .contacts__contacts-info {
+  max-height: 2000px;
+  transition: max-height 0.5s ease;
+}
+
+/* Поворот стрелки (единый) */
+.portfolio_portfolio-open-button svg {
+  transition: transform 0.3s ease;
+}
+.portfolio:not(.portfolio--collapsed) .portfolio_portfolio-open-button svg,
+.contacts:not(.contacts--collapsed) .portfolio_portfolio-open-button svg {
+  transform: rotate(180deg);
+}
+
+
+.contacts--collapsed .contacts__contacts-info {
+  max-height: 0;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+}

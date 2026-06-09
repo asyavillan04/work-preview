@@ -58,13 +58,14 @@ async function cascadeFadeIn(items, stagger = 200) {
 // =============================================
 // Основная анимационная последовательность
 // =============================================
+
 async function startHeroAnimation() {
   const featuresBlock = document.querySelector('.block.features');
   const skillsBlock = document.querySelector('.block.skills');
   const portfolioSection = document.querySelector('.portfolio');
   const contactsSection = document.querySelector('.contacts');
 
-  // --- 1. Левый блок (features) ---
+  // 1. Features (левый блок)
   if (featuresBlock) {
     await delay(100);
     featuresBlock.classList.add('animate');
@@ -85,7 +86,7 @@ async function startHeroAnimation() {
     }
   }
 
-  // --- 2. Правый блок (skills) ---
+  // 2. Skills (правый блок)
   if (skillsBlock) {
     skillsBlock.classList.add('animate');
     await delay(600);
@@ -94,106 +95,45 @@ async function startHeroAnimation() {
     const text = title?.dataset.text;
     if (title && text) await typeWriter(title, text, 40);
 
-    // Каскадное появление подзаголовков и технологий
     const skillItems = skillsBlock.querySelectorAll('h3, h2');
     if (skillItems.length > 0) {
       skillItems.forEach((item, index) => {
         setTimeout(() => {
           item.classList.add('animate');
-        }, index * 200); // задержка 200 мс между элементами
+        }, index * 200);
       });
-      // Ждём завершения всех анимаций
       await delay(skillItems.length * 200 + 400);
     }
   }
 
-  // --- 3. Блок портфолио (снизу) ---
+  // 3. Портфолио (снизу)
   if (portfolioSection) {
     portfolioSection.classList.add('animate');
     await delay(600);
   }
 
-  // --- 4. Контакты (слева направо) ---
+  // 4. Контакты (слева направо)
   if (contactsSection) {
     contactsSection.classList.add('animate');
     await delay(600);
   }
 
-  // После завершения всех анимаций инициализируем портфолио и скролл
+  // Инициализируем интерактивные элементы после завершения анимаций
   await initPortfolio();
+  await initContacts();
+  initToggleSections();
 }
 
 // =============================================
-// Интерактивное раскрытие/закрытие портфолио
+// Логика скролла внутри портфолио
 // =============================================
-async function initPortfolio() {
-  const portfolio = document.querySelector('.portfolio');
-  if (!portfolio) return;
 
-  await delay(800); // даём время на появление
-
-  const openButton = portfolio.querySelector('.portfolio_portfolio-open-button');
-  if (!openButton) {
-    console.warn('Кнопка открытия портфолио не найдена.');
-    return;
-  }
-
-  // Обработчик кнопки
-  openButton.addEventListener('click', () => {
-    togglePortfolio(portfolio);
-  });
-
-  // Обработчик клавиши
-  document.addEventListener('keydown', (event) => {
-    if (
-      event.key === 'ArrowDown' &&
-      portfolio.classList.contains('portfolio--collapsed') &&
-      document.activeElement === document.body
-    ) {
-      event.preventDefault();
-      togglePortfolio(portfolio);
-    }
-  });
-
-  // Инициализируем скролл для содержимого портфолио
-  initPortfolioScroll();
-}
-
-function togglePortfolio(portfolio) {
-  const title = portfolio.querySelector('.portfolio__portfolio-title');
-  if (!title) return;
-
-  if (portfolio.classList.contains('portfolio--collapsed')) {
-    // ОТКРЫВАЕМ: показываем контент и прокручиваем вверх
-    portfolio.classList.remove('portfolio--collapsed');
-    title.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  } else {
-    // ЗАКРЫВАЕМ: сворачиваем контент и прокручиваем вниз
-    portfolio.classList.add('portfolio--collapsed');
-    const rect = title.getBoundingClientRect();
-    const titleAbsoluteTop = rect.top + window.pageYOffset;
-    const viewportHeight = window.innerHeight;
-    const titleHeight = rect.height;
-    const scrollTarget = titleAbsoluteTop - viewportHeight + titleHeight;
-    window.scrollTo({
-      top: Math.max(0, scrollTarget),
-      behavior: 'smooth'
-    });
-  }
-}
-
-// =============================================
-// Скролл для карточек проектов
-// =============================================
 function initPortfolioScroll() {
   const projectsContent = document.querySelector('.portfolio__portfolio-content');
   const btnLeft = document.querySelector('.portfolio__portfolio-scroll-btn-left');
   const btnRight = document.querySelector('.portfolio__portfolio-scroll-btn-right');
 
-  if (!projectsContent || !btnLeft || !btnRight) {
-    console.warn('Не найдены элементы для скролла портфолио');
-    return;
-  }
+  if (!projectsContent || !btnLeft || !btnRight) return;
 
   const card = document.querySelector('.project-card');
   const gap = parseInt(getComputedStyle(projectsContent).columnGap) || 0;
@@ -221,58 +161,105 @@ function initPortfolioScroll() {
   updateButtonsVisibility();
 }
 
-function applyTheme(theme) {
-    const root = document.documentElement;
-    if (theme === 'auto') {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        root.classList.toggle('dark-theme', prefersDark);
-    } else {
-        root.classList.toggle('dark-theme', theme === 'dark');
-    }
-    localStorage.setItem('app-theme', theme);
+// =============================================
+// Инициализация кнопок открытия/закрытия
+// =============================================
+
+async function initPortfolio() {
+  const portfolio = document.querySelector('.portfolio');
+  if (!portfolio) return;
+  await delay(500);
+  initPortfolioScroll();
 }
 
-function initThemeSwitcher() {
-    const container = document.querySelector('[data-dropdown="theme"]');
-    if (!container) return;
+async function initContacts() {
+  // здесь можно будет добавить инициализацию для контактов, если понадобится
+}
 
-    const trigger = container.querySelector('.header-button');
-    const menu = container.querySelector('.settings-dropdown__menu');
-    const options = container.querySelectorAll('.option');
+function toggleSection(section, otherSection) {
+  const title = section.querySelector('.contacts__contacts-title') || section.querySelector('.portfolio__portfolio-title');
+  if (!title) return;
 
-    trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        menu.hidden = !menu.hidden;
-    });
+  const isPortfolio = section.classList.contains('portfolio');
+  const isHidden = isPortfolio
+    ? section.classList.contains('portfolio--collapsed')
+    : section.classList.contains('contacts--collapsed');
 
-    document.addEventListener('click', (e) => {
-        if (!container.contains(e.target)) {
-            menu.hidden = true;
+  if (isHidden) {
+    // Сворачиваем другую секцию, если она открыта
+    if (otherSection) {
+      const otherIsPortfolio = otherSection.classList.contains('portfolio');
+      const otherIsHidden = otherIsPortfolio
+        ? otherSection.classList.contains('portfolio--collapsed')
+        : otherSection.classList.contains('contacts--collapsed');
+      if (!otherIsHidden) {
+        if (otherIsPortfolio) {
+          otherSection.classList.add('portfolio--collapsed');
+        } else {
+          otherSection.classList.add('contacts--collapsed');
         }
-    });
+      }
+    }
 
-    options.forEach(option => {
-        option.addEventListener('click', () => {
-            const theme = option.dataset.theme;
-            if (theme) {
-                applyTheme(theme);
-                menu.hidden = true;
-            }
-        });
+    // Открываем текущую
+    if (isPortfolio) {
+      section.classList.remove('portfolio--collapsed');
+    } else {
+      section.classList.remove('contacts--collapsed');
+    }
+    title.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    // Закрываем текущую
+    if (isPortfolio) {
+      section.classList.add('portfolio--collapsed');
+    } else {
+      section.classList.add('contacts--collapsed');
+    }
+    const rect = title.getBoundingClientRect();
+    const titleAbsoluteTop = rect.top + window.pageYOffset;
+    const viewportHeight = window.innerHeight;
+    const titleHeight = rect.height;
+    const scrollTarget = titleAbsoluteTop - viewportHeight + titleHeight;
+    window.scrollTo({
+      top: Math.max(0, scrollTarget),
+      behavior: 'smooth'
     });
+  }
+}
 
-    const savedTheme = localStorage.getItem('app-theme') || 'auto';
-    applyTheme(savedTheme);
+function initToggleSections() {
+  const portfolio = document.querySelector('.portfolio');
+  const contacts = document.querySelector('.contacts');
+  if (!portfolio || !contacts) return;
+
+  const portfolioButton = portfolio.querySelector('.portfolio_portfolio-open-button');
+  const contactsButton = contacts.querySelector('.portfolio_portfolio-open-button');
+
+  if (portfolioButton) {
+    portfolioButton.addEventListener('click', () => toggleSection(portfolio, contacts));
+  }
+  if (contactsButton) {
+    contactsButton.addEventListener('click', () => toggleSection(contacts, portfolio));
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown' && document.activeElement === document.body) {
+      if (portfolio.classList.contains('portfolio--collapsed')) {
+        event.preventDefault();
+        toggleSection(portfolio, contacts);
+      } else if (contacts.classList.contains('contacts--collapsed')) {
+        event.preventDefault();
+        toggleSection(contacts, portfolio);
+      }
+    }
+  });
 }
 
 // =============================================
 // Запуск после готовности DOM
 // =============================================
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    startHeroAnimation();
-    initThemeSwitcher(); 
-});
+  document.addEventListener('DOMContentLoaded', startHeroAnimation);
 } else {
   startHeroAnimation();
 }

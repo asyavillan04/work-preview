@@ -6,7 +6,7 @@ html, body {
     margin: 0;
     font-family: 'Alumni Sans', sans-serif;
     font-weight: 100;
-    font-size: 2vh;
+    font-size: 3vh;
     color: var(--color-text-primary);
 }
 
@@ -25,13 +25,21 @@ main {
     gap: 20px;
 }
 
-h1, h2, h3 {
+a {
+    text-decoration: none;
+    color: var(--color-accent);
+    &:hover {
+        color: var(--color-accent-hover);
+    }
+}
+h1, h2, h3, div {
     margin: 0;
     font-weight: 300;
 }
 
 h1 {
     font-weight: 500;
+    font-size: 5vh;
     min-height: 1.2em; 
 }
 
@@ -39,6 +47,7 @@ h2 {
     font-size: 3vh;
 }
 h3 {
+    font-size: 4vh;
     font-weight: 700;
     color: var(--color-accent-secondary);
 }
