@@ -160,13 +160,25 @@ async function initPortfolio() {
 }
 
 function togglePortfolio(portfolio) {
+  const title = portfolio.querySelector('.portfolio__portfolio-title');
+  if (!title) return;
+
   if (portfolio.classList.contains('portfolio--collapsed')) {
-    // Открываем
+    // ОТКРЫВАЕМ: показываем контент и прокручиваем вверх
     portfolio.classList.remove('portfolio--collapsed');
-    portfolio.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    title.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } else {
-    // Закрываем
+    // ЗАКРЫВАЕМ: сворачиваем контент и прокручиваем вниз
     portfolio.classList.add('portfolio--collapsed');
+    const rect = title.getBoundingClientRect();
+    const titleAbsoluteTop = rect.top + window.pageYOffset;
+    const viewportHeight = window.innerHeight;
+    const titleHeight = rect.height;
+    const scrollTarget = titleAbsoluteTop - viewportHeight + titleHeight;
+    window.scrollTo({
+      top: Math.max(0, scrollTarget),
+      behavior: 'smooth'
+    });
   }
 }
 
