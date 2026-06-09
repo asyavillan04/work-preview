@@ -7,6 +7,7 @@ html, body {
     font-family: 'Alumni Sans', sans-serif;
     font-weight: 100;
     font-size: 2vh;
+    color: var(--color-text-primary);
 }
 
 html {

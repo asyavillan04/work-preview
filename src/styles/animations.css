@@ -1,3 +1,27 @@
+/* Плавная смена темы для основных элементов */
+html,
+body,
+header,
+.settings-dropdown__menu,
+.option,
+button,
+.portfolio,
+.project-card,
+.contacts,
+.block,
+.hero,
+.header-button {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+}
+
+body {
+    transition: background-color 0.3s ease;
+}
+
 /* Блоки изначально скрыты */
 div.block.features {
   transform: translateX(-100vw);

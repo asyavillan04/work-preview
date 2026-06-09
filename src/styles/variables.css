@@ -16,15 +16,24 @@
 }
 
 .dark-theme {
-    --color-bg: #1E231C;
-    --color-bg-alt: #2A3026;
-    --color-text-primary: #F0EDE4;
-    --color-text-secondary: #B8B5A8;
-    --color-accent: #C5835A;
-    --color-accent-hover: #D69872;
-    --color-accent-secondary: #8B9A7B;
-    --color-accent-secondary-1: #5A6B4E;
-    --color-accent-secondary-2: #A2B292;
-    --color-border: #3C4238;
-    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --color-bg: #12140F;
+    --color-bg-alt: #262c25;
+    --color-text-primary: #cac5b7;
+    --color-text-secondary: #9b9990;
+    
+    /* Приглушённая терракота – темнее, не яркая */
+    --color-accent: #8B5A3C;
+    --color-accent-hover: #7A4F33;
+    
+    /* Тёмный оливковый (зелёный акцент) – глубокий, не светлый */
+    --color-accent-secondary: #424f38;
+    
+    /* Ещё более тёмный для второстепенных элементов */
+    --color-accent-secondary-1: #293322;
+    
+    /* Светлее, но всё ещё приглушённо – для фоновых акцентов */
+    --color-accent-secondary-2: #636e58;
+    
+    --color-border: #2C3126;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
